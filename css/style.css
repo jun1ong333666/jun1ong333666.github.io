@@ -642,6 +642,10 @@ a.project-card .project-card__title {
   text-decoration-thickness: 1.5px;
 }
 
+a.project-card .project-card__date {
+  display: inline-block;
+}
+
 a.project-card:hover .project-card__title {
   color: var(--accent-teal);
 }
