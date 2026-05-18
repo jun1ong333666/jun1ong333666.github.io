@@ -224,6 +224,23 @@ button {
   width: 100%;
 }
 
+.nav__link--resume {
+  border: 1px solid var(--accent-teal);
+  padding: 6px 16px;
+  border-radius: 100px;
+  color: var(--accent-teal);
+  transition: all 0.3s;
+}
+
+.nav__link--resume::after {
+  display: none;
+}
+
+.nav__link--resume:hover {
+  background: var(--accent-teal);
+  color: #fff;
+}
+
 /* 主题切换按钮 */
 .nav__theme-toggle {
   width: 36px;
