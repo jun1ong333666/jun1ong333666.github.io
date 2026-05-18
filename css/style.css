@@ -383,8 +383,8 @@ button {
 /* 肖像占位 */
 .hero__portrait {
   position: relative;
-  width: clamp(280px, 35vw, 420px);
-  height: clamp(280px, 35vw, 420px);
+  width: clamp(200px, 25vw, 300px);
+  height: clamp(200px, 25vw, 300px);
   margin-left: auto;
 }
 
