@@ -1,12 +1,178 @@
 /* ==========================================
-   张俊龙 个人网站 — 交互逻辑
+   张俊龙 个人网站 — 交互逻辑 + 双语切换
    ========================================== */
 
 (function () {
   'use strict';
 
+  // ── 翻译字典 ──────────────────────────────────
+  const i18n = {
+    zh: {
+      'preloader.hint': '选择语言 / Select Language',
+
+      'nav.name': '张俊龙',
+      'nav.nameEn': 'ZHANG Junlong',
+      'nav.about': '关于',
+      'nav.work': '工作经历',
+      'nav.projects': '项目经历',
+      'nav.contact': '联系',
+
+      'hero.tag': '就业方向：海外运营 / 海外市场 / 游戏运营 / 赛事运营策划',
+      'hero.title1': '张俊',
+      'hero.title2': '龙',
+      'hero.desc': '体育管理背景 · 海外赛事运营经验<br>擅长用户增长与跨团队协作<br>具备数据分析与风险识别能力<br>注重合规性与流程性',
+      'hero.scroll': '向下滚动',
+
+      'about.heading': '关于我',
+      'about.lead': '具备海外赛事运营与用户增长经验，参与澳大利亚篮球联赛及国际学生体育活动运营。熟悉活动策划、用户运营、现场执行及跨团队协调。',
+      'about.text': '毕业于迪肯大学体育管理专业，主修市场营销、财务分析、管理经济学及商业分析。具备数据分析能力，能够通过用户行为分析优化活动参与率。英语可作为工作语言，具备国际化沟通及跨文化协作能力。熟练使用 ChatGPT、Gemini、Copilot 等 AI 工具提升运营效率，并能够使用 Claude Code 进行代码编写，以及 AI 生图进行设计画图等工作。',
+      'about.eduTitle': '教育背景',
+      'about.eduLink': '迪肯大学',
+      'about.eduDegree': '— 本科学士 · 体育管理',
+      'about.skill1': '赛事运营',
+      'about.skill2': '活动策划',
+      'about.skill3': '用户增长',
+      'about.skill4': '数据分析',
+      'about.skill5': '跨团队协作',
+      'about.skill6': '商务合作',
+      'about.skill7': '英语工作语言',
+      'about.skill8': 'AI 工具应用',
+      'about.skill9': '合规性流程性',
+
+      'work.heading': '工作经历',
+      'work.pba': '统筹管理赛季50场比赛的裁判与球员排班，共协调1000人次，确保赛事顺畅无调度事故；同时参与海外市场调研与用户洞察，通过海外市场调研分析消费者的行为制定激励机制，尝试提升女性参与度。协助赞助商沟通及权益执行，推动赞助方案落地，协调赛事品牌曝光与合作执行。',
+      'work.pbaTag1': '赛事组织运营与策划',
+      'work.pbaTag2': '海外市场调研',
+      'work.pbaTag3': '市场调研',
+      'work.shinewingCompany': '信永中和会计师事务所（深圳）',
+      'work.shinewing': '参与项目数据整理，使用 Excel 处理上万条业务记录，通过交叉比对识别异常数据，确保信息准确完整；协助香港团队完成国际品牌（如 Under Armour、Calvin Klein）在内地的库存盘点与核验，并独立撰写差异分析报告，提升跨境协作能力；将核查过程、问题及建议整理为标准化报告，规范文档形式，提高跨团队信息同步效率。',
+      'work.shinewingTag1': '数据整理与流程核查',
+      'work.shinewingTag2': '跨境业务协作',
+      'work.shinewingTag3': '报告撰写与流程合规',
+
+      'projects.heading': '项目经历',
+      'projects.card1Title': '维多利亚国际学生运动节',
+      'projects.card1Desc': '协助澳大利亚大学体育协会举办国际学生运动节，吸引来自26个国家约500名参与者。负责活动流程策划及现场执行，协调高校队伍、场馆及赛事工作人员。',
+      'projects.card1Tag1': '活动策划',
+      'projects.card1Tag2': '现场运营',
+      'projects.card1Tag3': '跨团队协调',
+      'projects.card2Company': '华商能源科技股份有限公司',
+      'projects.card2TitleSuffix': '年度审计项目',
+      'projects.card2Desc': '参与项目数据整理，利用 Excel 处理上万条业务记录进行数据分析，通过交叉比对发现异常，确保业务信息准确完整。',
+      'projects.card2Tag1': '数据整理与流程核查',
+      'projects.card3Company': '尚普（国际）控股有限公司',
+      'projects.card3TitleSuffix': '项目',
+      'projects.card3Desc': '协助香港团队完成国际品牌在内地的审计工作，独立撰写差异分析报告，提升多方协作下处理复杂信息的能力。将核查流程、问题及改进建议整理为标准化报告，用于跨团队及外部沟通，提高文档规范性和信息同步效率。',
+      'projects.card3Tag1': '跨境业务协作',
+      'projects.card3Tag2': '报告撰写',
+
+      'contact.heading': '联系我',
+      'contact.text': '如果你有合作机会或想了解更多，<br>欢迎随时联系。',
+      'contact.location': '深圳 · 南山',
+
+      'footer.copy': '© 2026 张俊龙',
+    },
+
+    en: {
+      'preloader.hint': '选择语言 / Select Language',
+
+      'nav.name': 'Junlong Zhang',
+      'nav.nameEn': 'ZHANG Junlong',
+      'nav.about': 'About',
+      'nav.work': 'Experience',
+      'nav.projects': 'Projects',
+      'nav.contact': 'Contact',
+
+      'hero.tag': 'Career: Overseas Operations / Marketing / Game Operations / Event Planning',
+      'hero.title1': 'Junlong',
+      'hero.title2': 'Zhang',
+      'hero.desc': 'Sports Management Background · Overseas Event Operations<br>Skilled in User Growth & Cross-team Collaboration<br>Data Analysis & Risk Identification Capabilities<br>Compliance & Process-Oriented',
+      'hero.scroll': 'Scroll Down',
+
+      'about.heading': 'About Me',
+      'about.lead': 'Experienced in overseas event operations and user growth, having participated in the Australian Basketball League and international student sports activities. Proficient in event planning, user operations, on-site execution, and cross-team coordination.',
+      'about.text': 'Graduated from Deakin University with a degree in Sports Management, majoring in Marketing, Financial Analysis, Managerial Economics, and Business Analytics. Possesses data analysis skills to optimize event participation rates through user behavior analysis. English as a working language with international communication and cross-cultural collaboration capabilities. Proficient in using AI tools such as ChatGPT, Gemini, and Copilot to enhance operational efficiency, and capable of coding with Claude Code and using AI image generation for design and graphics.',
+      'about.eduTitle': 'Education',
+      'about.eduLink': 'Deakin University',
+      'about.eduDegree': '— Bachelor\'s Degree · Sports Management',
+      'about.skill1': 'Event Operations',
+      'about.skill2': 'Event Planning',
+      'about.skill3': 'User Growth',
+      'about.skill4': 'Data Analysis',
+      'about.skill5': 'Cross-team Collaboration',
+      'about.skill6': 'Business Development',
+      'about.skill7': 'English (Working Language)',
+      'about.skill8': 'AI Tool Application',
+      'about.skill9': 'Compliance & Process',
+
+      'work.heading': 'Work Experience',
+      'work.pba': 'Coordinated referee and player scheduling for 50 matches per season, managing a total of 1,000 personnel assignments to ensure smooth tournament operations without scheduling incidents. Participated in overseas market research and user insights, analyzing consumer behavior to develop incentive mechanisms aimed at increasing female participation. Assisted in sponsor communication and rights execution, driving sponsorship plan implementation and coordinating event brand exposure and partnership execution.',
+      'work.pbaTag1': 'Event Operations & Planning',
+      'work.pbaTag2': 'Overseas Market Research',
+      'work.pbaTag3': 'Market Research',
+      'work.shinewingCompany': 'ShineWing Certified Public Accountants (Shenzhen)',
+      'work.shinewing': 'Participated in project data organization, processing tens of thousands of business records using Excel to identify anomalies through cross-referencing, ensuring data accuracy and completeness. Assisted the Hong Kong team in inventory verification for international brands such as Under Armour and Calvin Klein in mainland China, independently drafting discrepancy analysis reports to enhance cross-border collaboration capabilities. Standardized verification processes, issues, and recommendations into formal reports to improve cross-team information synchronization efficiency.',
+      'work.shinewingTag1': 'Data Organization & Process Verification',
+      'work.shinewingTag2': 'Cross-border Collaboration',
+      'work.shinewingTag3': 'Report Writing & Process Compliance',
+
+      'projects.heading': 'Project Experience',
+      'projects.card1Title': 'Victoria International Student Sports Festival',
+      'projects.card1Desc': 'Assisted the Australian University Sports Association in organizing the International Student Sports Festival, attracting approximately 500 participants from 26 countries. Responsible for event process planning and on-site execution, coordinating university teams, venues, and event staff.',
+      'projects.card1Tag1': 'Event Planning',
+      'projects.card1Tag2': 'On-site Operations',
+      'projects.card1Tag3': 'Cross-team Coordination',
+      'projects.card2Company': 'CM Energy Incorporated',
+      'projects.card2TitleSuffix': ' Annual Audit Project',
+      'projects.card2Desc': 'Participated in project data organization, processing tens of thousands of business records using Excel for data analysis, identifying anomalies through cross-referencing to ensure data accuracy and completeness.',
+      'projects.card2Tag1': 'Data Organization & Process Verification',
+      'projects.card3Company': 'Forward Fashion (International) Holdings Company Limited',
+      'projects.card3TitleSuffix': ' Project',
+      'projects.card3Desc': 'Assisted the Hong Kong team in completing audits of international brands in mainland China, independently drafting discrepancy analysis reports to enhance the ability to handle complex information in multi-party collaboration. Standardized verification processes, issues, and improvement recommendations into formal reports for cross-team and external communication, improving documentation standardization and information synchronization efficiency.',
+      'projects.card3Tag1': 'Cross-border Collaboration',
+      'projects.card3Tag2': 'Report Writing',
+
+      'contact.heading': 'Contact Me',
+      'contact.text': 'If you have collaboration opportunities<br>or want to learn more, feel free to reach out.',
+      'contact.location': 'Shenzhen · Nanshan',
+
+      'footer.copy': '© 2026 Junlong Zhang',
+    },
+  };
+
+  let currentLang = localStorage.getItem('lang') || null;
+
+  // ── 应用语言 ──────────────────────────────────
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+    document.documentElement.setAttribute('data-lang', lang);
+
+    const dict = i18n[lang];
+    if (!dict) return;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) {
+        // 保留内部 HTML 标签（如 <br>）
+        if (dict[key].includes('<br>')) {
+          el.innerHTML = dict[key];
+        } else {
+          el.textContent = dict[key];
+        }
+      }
+    });
+  }
+
+  // 如果已选择过语言，立即应用
+  if (currentLang) {
+    applyLang(currentLang);
+  }
+
   // ── 预加载动画 ──────────────────────────────────
   const preloader = document.getElementById('preloader');
+  const preloaderLang = document.getElementById('preloaderLang');
   const mainContent = document.getElementById('mainContent');
 
   function hidePreloader() {
@@ -24,15 +190,49 @@
     mainContent.style.visibility = 'hidden';
   }
 
-  // 在预加载动画完成后（最后一个字揭示 + 0.6s 结束 + 0.5s 留白）
-  // charReveal: char3 delay 0.5s + duration 0.6s = 1.1s, 再加 1s 呼吸
-  // overlay animation: 0.8s
-  const PRELOADER_DURATION = 2200; // ms
-  setTimeout(hidePreloader, PRELOADER_DURATION);
+  // 如果已选择过语言，直接按原定时器关闭 preloader
+  if (currentLang) {
+    const PRELOADER_DURATION = 2200;
+    setTimeout(hidePreloader, PRELOADER_DURATION);
+  } else {
+    // 未选择语言：动画完成后显示语言选择
+    const LANG_SHOW_DELAY = 1800;
+    setTimeout(() => {
+      if (preloaderLang) {
+        preloaderLang.classList.add('preloader__lang--show');
+      }
+    }, LANG_SHOW_DELAY);
+  }
 
-  // 任意点击跳过预加载
+  // ── 语言选择按钮 ──────────────────────────────
+  document.querySelectorAll('.preloader__lang-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const lang = btn.getAttribute('data-lang');
+      if (!lang) return;
+
+      applyLang(lang);
+      // 短暂延迟让用户看到点击效果
+      setTimeout(hidePreloader, 200);
+    });
+  });
+
+  // 已选语言时点击 preloader 可跳过；未选时点击不跳过
   if (preloader) {
-    preloader.addEventListener('click', hidePreloader);
+    preloader.addEventListener('click', () => {
+      if (currentLang) {
+        hidePreloader();
+      }
+    });
+  }
+
+  // ── 导航栏语言切换按钮 ─────────────────────────
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      const next = currentLang === 'zh' ? 'en' : 'zh';
+      applyLang(next);
+    });
   }
 
   // ── 滚动渐显 (Intersection Observer) ────────────
