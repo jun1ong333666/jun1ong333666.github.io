@@ -43,7 +43,22 @@ body {
 
 a {
   color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--accent-teal);
+  text-decoration-thickness: 1.5px;
+}
+
+a:hover {
+  color: var(--accent-teal);
+}
+
+.nav__link,
+.nav__brand,
+.contact__link,
+.project-card {
   text-decoration: none;
+  color: inherit;
 }
 
 img {
@@ -610,6 +625,17 @@ button {
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+a.project-card .project-card__title {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--accent-teal);
+  text-decoration-thickness: 1.5px;
+}
+
+a.project-card:hover .project-card__title {
+  color: var(--accent-teal);
 }
 
 .project-card__desc {
