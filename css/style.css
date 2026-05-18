@@ -266,6 +266,20 @@ button {
 }
 
 /* ==========================================
+   滚动进度条
+   ========================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-teal));
+  z-index: 101;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+/* ==========================================
    导航
    ========================================== */
 .nav {
@@ -338,8 +352,13 @@ button {
   color: var(--text-primary);
 }
 
-.nav__link:hover::after {
+.nav__link:hover::after,
+.nav__link--active::after {
   width: 100%;
+}
+
+.nav__link--active {
+  color: var(--text-primary);
 }
 
 .nav__link--resume {

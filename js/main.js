@@ -346,4 +346,119 @@
     });
   });
 
+  // ── 1. 滚动进度条 ──────────────────────────────
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  document.body.prepend(progressBar);
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+
+  // ── 2. Hero 视差 ────────────────────────────────
+  const heroText = document.querySelector('.hero__text');
+  const heroVisual = document.querySelector('.hero__visual');
+
+  // 性能优化
+  if (heroText) heroText.style.willChange = 'transform, opacity';
+  if (heroVisual) heroVisual.style.willChange = 'transform, opacity';
+
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+
+    if (scrollY <= heroHeight) {
+      if (heroText) {
+        heroText.style.transform = `translateY(${scrollY * 0.08}px)`;
+        heroText.style.opacity = Math.max(0, 1 - scrollY / heroHeight * 0.9);
+      }
+      if (heroVisual) {
+        heroVisual.style.transform = `translateY(${scrollY * 0.18}px)`;
+        heroVisual.style.opacity = Math.max(0, 1 - scrollY / heroHeight * 0.7);
+      }
+    }
+  }
+
+  // ── 3. 当前章节高亮导航 ──────────────────────────
+  const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
+  const sections = [];
+
+  navLinks.forEach((link) => {
+    const id = link.getAttribute('href').slice(1);
+    const section = document.getElementById(id);
+    if (section) sections.push({ el: section, link: link });
+  });
+
+  function updateActiveNav() {
+    const scrollY = window.scrollY + 120;
+
+    let currentId = null;
+    sections.forEach(({ el, link }) => {
+      const top = el.offsetTop;
+      const bottom = top + el.offsetHeight;
+      if (scrollY >= top && scrollY < bottom) {
+        currentId = link;
+      }
+    });
+
+    navLinks.forEach((link) => {
+      if (link === currentId) {
+        link.classList.add('nav__link--active');
+      } else {
+        link.classList.remove('nav__link--active');
+      }
+    });
+  }
+
+  // ── 4. 卡片滚动微交互 ───────────────────────────
+  const allCards = document.querySelectorAll('.project-card');
+
+  allCards.forEach(function (card) {
+    card.style.transition = 'transform 0.3s ease-out';
+  });
+
+  function updateCardTilt() {
+    const viewportMid = window.innerHeight / 2;
+
+    allCards.forEach(function (card) {
+      const rect = card.getBoundingClientRect();
+      const cardMid = rect.top + rect.height / 2;
+      const distFromCenter = (cardMid - viewportMid) / viewportMid;
+
+      if (Math.abs(distFromCenter) < 0.8) {
+        const scale = 1 + (0.8 - Math.abs(distFromCenter)) * 0.02;
+        const translateY = distFromCenter * -8;
+        card.style.transform = 'scale(' + scale + ') translateY(' + translateY + 'px)';
+      } else {
+        card.style.transform = '';
+      }
+    });
+  }
+
+  // ── 合并滚动监听 (rAF 节流) ─────────────────────
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateProgress();
+        updateParallax();
+        updateActiveNav();
+        updateCardTilt();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // 初始调用
+  updateProgress();
+  updateActiveNav();
+  updateCardTilt();
+
 })();
