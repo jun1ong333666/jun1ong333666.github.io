@@ -15,6 +15,7 @@ function App() {
   const [lang, setLang] = useState<"zh" | "en">("zh");
 
   const handleClick = () => {
+    localStorage.setItem("lang", lang);
     window.location.href = "/old-index.html";
   };
 
