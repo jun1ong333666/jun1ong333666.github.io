@@ -170,61 +170,7 @@
     applyLang(currentLang);
   }
 
-  // ── 预加载动画 ──────────────────────────────────
-  const preloader = document.getElementById('preloader');
-  const preloaderLang = document.getElementById('preloaderLang');
-  const mainContent = document.getElementById('mainContent');
-
-  function hidePreloader() {
-    if (!preloader) return;
-    preloader.classList.add('preloader--exit');
-    mainContent.style.visibility = 'visible';
-    preloader.addEventListener('animationend', function handler() {
-      preloader.style.display = 'none';
-      preloader.removeEventListener('animationend', handler);
-    });
-  }
-
-  // 初始隐藏主内容
-  if (mainContent) {
-    mainContent.style.visibility = 'hidden';
-  }
-
-  // 如果已选择过语言，直接按原定时器关闭 preloader
-  if (currentLang) {
-    const PRELOADER_DURATION = 2200;
-    setTimeout(hidePreloader, PRELOADER_DURATION);
-  } else {
-    // 未选择语言：动画完成后显示语言选择
-    const LANG_SHOW_DELAY = 1800;
-    setTimeout(() => {
-      if (preloaderLang) {
-        preloaderLang.classList.add('preloader__lang--show');
-      }
-    }, LANG_SHOW_DELAY);
-  }
-
-  // ── 语言选择按钮 ──────────────────────────────
-  document.querySelectorAll('.preloader__lang-btn').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const lang = btn.getAttribute('data-lang');
-      if (!lang) return;
-
-      applyLang(lang);
-      // 短暂延迟让用户看到点击效果
-      setTimeout(hidePreloader, 200);
-    });
-  });
-
-  // 已选语言时点击 preloader 可跳过；未选时点击不跳过
-  if (preloader) {
-    preloader.addEventListener('click', () => {
-      if (currentLang) {
-        hidePreloader();
-      }
-    });
-  }
+  // ── 预加载已移除，内容直接可见 ──────────────────
 
   // ── 导航栏语言切换按钮 ─────────────────────────
   const langToggle = document.getElementById('langToggle');
