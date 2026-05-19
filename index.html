@@ -11,6 +11,11 @@
 </head>
 <body>
 
+  <!-- ========== 环境光晕 ========== -->
+  <div class="bg-blob bg-blob--1" aria-hidden="true"></div>
+  <div class="bg-blob bg-blob--2" aria-hidden="true"></div>
+  <div class="bg-blob bg-blob--3" aria-hidden="true"></div>
+
   <!-- ========== 预加载动画 ========== -->
   <div class="preloader" id="preloader">
     <div class="preloader__bg"></div>
@@ -68,6 +73,8 @@
         </div>
         <div class="hero__visual reveal">
           <div class="hero__portrait">
+            <div class="hero__portrait-ring hero__portrait-ring--outer"></div>
+            <div class="hero__portrait-ring hero__portrait-ring--inner"></div>
             <div class="hero__portrait-placeholder">
               <img src="images/portrait-new.jpg" alt="张俊龙" class="hero__portrait-img">
             </div>

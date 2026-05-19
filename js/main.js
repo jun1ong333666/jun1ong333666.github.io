@@ -255,12 +255,14 @@
 
   revealElements.forEach((el) => observer.observe(el));
 
-  // ── 鼠标视差（Hero 肖像光晕） ──────────────────
+  // ── 鼠标视差（Hero 肖像光晕 + 光环） ──────────
   const heroGlow = document.querySelector('.hero__glow');
   const heroSection = document.querySelector('.hero');
+  const heroRingOuter = document.querySelector('.hero__portrait-ring--outer');
+  const heroRingInner = document.querySelector('.hero__portrait-ring--inner');
 
   if (heroGlow && heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
+    heroSection.addEventListener('mousemove', function (e) {
       const rect = heroSection.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -269,16 +271,33 @@
       const moveX = (x - centerX) / centerX;
       const moveY = (y - centerY) / centerY;
 
-      heroGlow.style.transform = `translate(calc(-50% + ${moveX * 30}px), calc(-50% + ${moveY * 30}px))`;
+      heroGlow.style.transform = 'translate(calc(-50% + ' + (moveX * 35) + 'px), calc(-50% + ' + (moveY * 35) + 'px))';
+
+      if (heroRingOuter) {
+        heroRingOuter.style.transform = 'translate(calc(-50% + ' + (moveX * 10) + 'px), calc(-50% + ' + (moveY * 10) + 'px))';
+      }
+      if (heroRingInner) {
+        heroRingInner.style.transform = 'translate(calc(-50% + ' + (moveX * -8) + 'px), calc(-50% + ' + (moveY * -8) + 'px))';
+      }
     });
 
-    heroSection.addEventListener('mouseleave', () => {
+    heroSection.addEventListener('mouseleave', function () {
       heroGlow.style.transform = 'translate(-50%, -50%)';
       heroGlow.style.transition = 'transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)';
+      if (heroRingOuter) {
+        heroRingOuter.style.transform = 'translate(-50%, -50%)';
+        heroRingOuter.style.transition = 'transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)';
+      }
+      if (heroRingInner) {
+        heroRingInner.style.transform = 'translate(-50%, -50%)';
+        heroRingInner.style.transition = 'transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)';
+      }
     });
 
-    heroSection.addEventListener('mouseenter', () => {
+    heroSection.addEventListener('mouseenter', function () {
       heroGlow.style.transition = 'none';
+      if (heroRingOuter) heroRingOuter.style.transition = 'none';
+      if (heroRingInner) heroRingInner.style.transition = 'none';
     });
   }
 
@@ -313,25 +332,15 @@
     });
   }
 
-  // ── 导航栏滚动阴影 ─────────────────────────────
+  // ── 导航栏滚动效果 ─────────────────────────────
   const nav = document.getElementById('nav');
 
   if (nav) {
-    const navBgDark = 'rgba(8, 8, 8, 0.85)';
-    const navBgLight = 'rgba(243, 243, 243, 0.9)';
-    const navBorderDark = '1px solid rgba(255,255,255,0.04)';
-    const navBorderLight = '1px solid rgba(0,0,0,0.06)';
-
-    window.addEventListener('scroll', () => {
-      const isDark = html.getAttribute('data-theme') === 'dark';
+    window.addEventListener('scroll', function () {
       if (window.scrollY > 50) {
-        nav.style.background = isDark ? navBgDark : navBgLight;
-        nav.style.backdropFilter = 'blur(12px)';
-        nav.style.borderBottom = isDark ? navBorderDark : navBorderLight;
+        nav.classList.add('nav--scrolled');
       } else {
-        nav.style.background = 'transparent';
-        nav.style.backdropFilter = 'none';
-        nav.style.borderBottom = 'none';
+        nav.classList.remove('nav--scrolled');
       }
     }, { passive: true });
   }
@@ -437,6 +446,22 @@
       }
     });
   }
+
+  // ── 5. 卡片鼠标聚光灯 ────────────────────────────
+  allCards.forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mouse-x', x + '%');
+      card.style.setProperty('--mouse-y', y + '%');
+    });
+
+    card.addEventListener('mouseleave', function () {
+      card.style.removeProperty('--mouse-x');
+      card.style.removeProperty('--mouse-y');
+    });
+  });
 
   // ── 合并滚动监听 (rAF 节流) ─────────────────────
   let ticking = false;
