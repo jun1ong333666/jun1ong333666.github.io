@@ -670,14 +670,14 @@ button {
 }
 
 .hero__tag {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--accent-teal);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 28px;
   display: inline-block;
-  padding: 6px 16px;
+  padding: 7px 18px;
   border: 1px solid rgba(94, 106, 210, 0.18);
   border-radius: 100px;
   background: var(--accent-teal-dim);
@@ -686,13 +686,14 @@ button {
 .hero__title {
   font-size: clamp(60px, 9vw, 130px);
   font-weight: 900;
-  line-height: 0.88;
-  letter-spacing: -0.04em;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   margin-bottom: 36px;
 }
 
 .hero__title-line {
   display: block;
+  line-height: 1.05;
 }
 
 .hero__title-line:first-child {
