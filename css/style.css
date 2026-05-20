@@ -1180,6 +1180,23 @@ a.project-card:hover .project-card__company {
   transition: all var(--transition-fast);
 }
 
+.gaming-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-red);
+  text-decoration: none;
+  margin-left: 12px;
+  transition: gap 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.gaming-detail-link:hover {
+  gap: 8px;
+  color: var(--accent-teal);
+}
+
 .project-card__image {
   position: relative;
   overflow: hidden;
