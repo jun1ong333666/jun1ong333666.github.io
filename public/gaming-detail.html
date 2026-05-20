@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>游戏详情 - 张俊龙</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background-image: none;
+      background-color: #0a0a0c;
+    }
+    body::before,
+    body::after {
+      display: none;
+    }
+    .gaming-gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 24px 60px;
+      position: relative;
+      z-index: 1;
+    }
+    .gaming-gallery h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+    .gaming-gallery .subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 48px;
+    }
+    .gaming-gallery .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent-red);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: gap 0.2s;
+    }
+    .gaming-gallery .back-link:hover {
+      gap: 10px;
+    }
+    .gaming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+    }
+    .gaming-grid img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .gaming-grid img:hover {
+      transform: scale(1.02);
+    }
+    /* 图片放大灯箱 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.92);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox--open {
+      display: flex;
+    }
+    .lightbox__close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      backdrop-filter: blur(8px);
+    }
+    .lightbox__close:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+    }
+    @media (max-width: 640px) {
+      .gaming-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="gaming-gallery">
+    <a href="old-index.html" class="back-link">← 返回主页</a>
+    <h1>游戏详情</h1>
+    <p class="subtitle">游戏 / 电子竞技 · 精彩瞬间</p>
+    <div class="gaming-grid">
+      <img src="images/gaming1.png" alt="游戏截图1" loading="lazy">
+      <img src="images/gaming2.png" alt="游戏截图2" loading="lazy">
+      <img src="images/gaming3.jpg" alt="游戏截图3" loading="lazy">
+      <img src="images/gaming4.jpg" alt="游戏截图4" loading="lazy">
+      <img src="images/gaming5.jpg" alt="游戏截图5" loading="lazy">
+      <img src="images/gaming6.jpg" alt="游戏截图6" loading="lazy">
+      <img src="images/gaming7.png" alt="游戏截图7" loading="lazy">
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightboxClose" aria-label="关闭">✕</button>
+    <img src="" alt="" id="lightboxImg">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    document.querySelectorAll('.gaming-grid img').forEach(img => {
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('lightbox--open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('lightbox--open');
+      document.body.style.overflow = '';
+    });
+    lightboxImg.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    document.getElementById('lightboxClose').addEventListener('click', (e) => {
+      e.stopPropagation();
+      lightbox.classList.remove('lightbox--open');
+      document.body.style.overflow = '';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('lightbox--open');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

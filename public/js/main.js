@@ -26,7 +26,7 @@
 
       'about.heading': '关于我',
       'about.lead': '具备海外赛事运营与用户增长经验，参与澳大利亚篮球联赛及国际学生体育活动运营。熟悉活动策划、用户运营、现场执行及跨团队协调。',
-      'about.text': '毕业于迪肯大学体育管理专业，主修市场营销、财务分析、管理经济学及商业分析。具备数据分析能力，能够通过用户行为分析优化活动参与率。英语可作为工作语言，具备国际化沟通及跨文化协作能力。熟练使用 ChatGPT、Gemini、Copilot 等 AI 工具提升运营效率，并能够使用 Claude Code 进行代码编写，以及 AI 生图进行设计画图等工作。',
+      'about.text': '毕业于迪肯大学体育管理专业，主修市场营销、财务分析、管理经济学及商业分析。具备数据分析能力，能够通过用户行为分析优化活动参与率。英语可作为工作语言，具备国际化沟通及跨文化协作能力。熟练使用 ChatGPT、Gemini、Copilot 等 AI 工具，并能够使用 Claude Code，Codex 进行代码编写和提高工作效率，以及 AI 生图进行设计画图等工作。',
       'about.eduTitle': '教育背景',
       'about.eduLink': '迪肯大学',
       'about.eduDegree': '— 本科学士 · 体育管理',
@@ -80,6 +80,7 @@
       'hobbies.card2Tag3': '用户运营',
       'hobbies.card2Tag4': '重度FPS玩家',
       'hobbies.card2Tag5': '高分玩家',
+      'hobbies.card2Detail': '游戏详情 →',
       'hobbies.card3Title': 'AI 工具探索',
       'hobbies.card3Desc': '热衷于探索各类 AI 工具（ChatGPT、Claude、AI 生图等），研究如何将 AI 应用于运营效率提升、内容创作及数据分析等实际工作场景。',
       'hobbies.card3Tag1': 'AI 应用',
@@ -112,7 +113,7 @@
 
       'about.heading': 'About Me',
       'about.lead': 'Experienced in overseas event operations and user growth, having participated in the Australian Basketball League and international student sports activities. Proficient in event planning, user operations, on-site execution, and cross-team coordination.',
-      'about.text': 'Graduated from Deakin University with a degree in Sports Management, majoring in Marketing, Financial Analysis, Managerial Economics, and Business Analytics. Possesses data analysis skills to optimize event participation rates through user behavior analysis. English as a working language with international communication and cross-cultural collaboration capabilities. Proficient in using AI tools such as ChatGPT, Gemini, and Copilot to enhance operational efficiency, and capable of coding with Claude Code and using AI image generation for design and graphics.',
+      'about.text': 'Graduated from Deakin University with a degree in Sports Management, majoring in Marketing, Financial Analysis, Managerial Economics, and Business Analytics. Possesses data analysis skills to optimize event participation rates through user behavior analysis. English as a working language with international communication and cross-cultural collaboration capabilities. Proficient in using AI tools such as ChatGPT, Gemini, and Copilot, and capable of coding with Claude Code and Codex to improve work efficiency, as well as AI image generation for design and graphics.',
       'about.eduTitle': 'Education',
       'about.eduLink': 'Deakin University',
       'about.eduDegree': '— Bachelor\'s Degree · Sports Management',
@@ -166,6 +167,7 @@
       'hobbies.card2Tag3': 'User Operations',
       'hobbies.card2Tag4': 'Hardcore FPS Player',
       'hobbies.card2Tag5': 'High-Rank Player',
+      'hobbies.card2Detail': 'Game Details →',
       'hobbies.card3Title': 'AI Tool Exploration',
       'hobbies.card3Desc': 'Keen on exploring various AI tools (ChatGPT, Claude, AI image generation, etc.), researching how to apply AI to operational efficiency improvement, content creation and data analysis in practical work scenarios.',
       'hobbies.card3Tag1': 'AI Application',
