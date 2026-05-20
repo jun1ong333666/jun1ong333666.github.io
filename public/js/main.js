@@ -18,7 +18,7 @@
       'nav.hobbies': '兴趣爱好',
       'nav.contact': '联系',
 
-      'hero.tag': '就业方向：海外运营 / 海外市场 / 游戏运营 / 赛事运营策划',
+      'hero.tag': '就业方向：运营，策划，管理等',
       'hero.title1': '张俊',
       'hero.title2': '龙',
       'hero.desc': '体育管理背景 · 海外赛事运营经验<br>擅长用户增长与跨团队协作<br>具备数据分析与风险识别能力<br>注重合规性与流程性',
@@ -107,7 +107,7 @@
       'nav.hobbies': 'Hobbies',
       'nav.contact': 'Contact',
 
-      'hero.tag': 'Career: Overseas Operations / Marketing / Game Operations / Event Planning',
+      'hero.tag': 'Career: Operations, Planning, Management, etc.',
       'hero.title1': 'Junlong',
       'hero.title2': 'Zhang',
       'hero.desc': 'Sports Management Background · Overseas Event Operations<br>Skilled in User Growth & Cross-team Collaboration<br>Data Analysis & Risk Identification Capabilities<br>Compliance & Process-Oriented',
