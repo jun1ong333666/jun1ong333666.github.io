@@ -91,6 +91,7 @@
       'contact.text': '如果你有合作机会或想了解更多，<br>欢迎随时联系。',
       'contact.location': '深圳 · 南山',
       'notice.text': '网站内容长期更新~',
+      'notice2.text': '网站图片较多，等等就加载好了~',
 
       'footer.copy': '© 2026 张俊龙',
     },
@@ -179,6 +180,7 @@
       'contact.text': 'If you have collaboration opportunities<br>or want to learn more, feel free to reach out.',
       'contact.location': 'Shenzhen · Nanshan',
       'notice.text': 'The website content is updated on a long-term basis',
+      'notice2.text': 'The website has a lot of images. It should finish loading in a moment.',
 
       'footer.copy': '© 2026 Junlong Zhang',
     },
@@ -497,16 +499,18 @@
   updateCardTilt();
 
   // ── 浮动通知关闭 ──────────────────────────────────
-  const floatingNotice = document.getElementById('floatingNotice');
-  const noticeClose = document.getElementById('noticeClose');
-  if (floatingNotice && noticeClose) {
-    if (sessionStorage.getItem('noticeClosed')) {
-      floatingNotice.classList.add('floating-notice--hidden');
+  document.querySelectorAll('.floating-notice').forEach(function (notice) {
+    var id = notice.id;
+    if (sessionStorage.getItem(id + '-closed')) {
+      notice.style.display = 'none';
     }
-    noticeClose.addEventListener('click', function () {
-      floatingNotice.classList.add('floating-notice--hidden');
-      sessionStorage.setItem('noticeClosed', '1');
-    });
-  }
+    var btn = notice.querySelector('.floating-notice__close');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        notice.style.display = 'none';
+        sessionStorage.setItem(id + '-closed', '1');
+      });
+    }
+  });
 
 })();
