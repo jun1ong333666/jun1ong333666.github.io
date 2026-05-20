@@ -1373,27 +1373,6 @@ a.project-card:hover .project-card__company {
 /* ==========================================
    右下角浮动通知
    ========================================== */
-.floating-notice {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 18px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  max-width: 380px;
-  animation: noticeSlideUp 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-.floating-notice--hidden {
-  display: none;
-}
 @keyframes noticeSlideUp {
   from {
     opacity: 0;
@@ -1403,6 +1382,29 @@ a.project-card:hover .project-card__company {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.floating-notice {
+  position: fixed;
+  right: 28px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--accent-red);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 6px rgba(94, 106, 210, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  max-width: 400px;
+  animation: noticeSlideUp 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+#noticeLoading {
+  bottom: 88px;
+}
+#noticeUpdate {
+  bottom: 28px;
 }
 .floating-notice__text {
   margin: 0;
@@ -1432,7 +1434,8 @@ a.project-card:hover .project-card__company {
 }
 [data-theme="light"] .floating-notice {
   background: #fff;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-red);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 0 0 6px rgba(0, 82, 255, 0.06);
 }
 [data-theme="light"] .floating-notice__close {
   background: rgba(0, 0, 0, 0.06);
