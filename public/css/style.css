@@ -63,6 +63,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   position: relative;
+  transition: opacity 0.35s ease;
+}
+body.lang-fading {
+  opacity: 0;
 }
 
 [data-theme="light"] body {
@@ -1364,6 +1368,79 @@ a.project-card:hover .project-card__company {
 /* 白天模式: 回到顶部按钮蓝色阴影 */
 [data-theme="light"] .footer__top:hover {
   box-shadow: 0 8px 24px rgba(0, 82, 255, 0.3);
+}
+
+/* ==========================================
+   右下角浮动通知
+   ========================================== */
+.floating-notice {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  max-width: 380px;
+  animation: noticeSlideUp 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.floating-notice--hidden {
+  display: none;
+}
+@keyframes noticeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.floating-notice__text {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.floating-notice__close {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.floating-notice__close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--text-primary);
+}
+[data-theme="light"] .floating-notice {
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+[data-theme="light"] .floating-notice__close {
+  background: rgba(0, 0, 0, 0.06);
+  color: #888;
+}
+[data-theme="light"] .floating-notice__close:hover {
+  background: rgba(0, 0, 0, 0.12);
+  color: #333;
 }
 
 /* ==========================================
