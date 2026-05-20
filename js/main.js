@@ -26,7 +26,7 @@
 
       'about.heading': '关于我',
       'about.lead': '具备海外赛事运营与用户增长经验，参与澳大利亚篮球联赛及国际学生体育活动运营。熟悉活动策划、用户运营、现场执行及跨团队协调。',
-      'about.text': '毕业于迪肯大学体育管理专业，主修市场营销、财务分析、管理经济学及商业分析。具备数据分析能力，能够通过用户行为分析优化活动参与率。英语可作为工作语言，具备国际化沟通及跨文化协作能力。熟练使用 ChatGPT、Gemini、Copilot 等 AI 工具，并能够使用 Claude Code，Codex 进行代码编写和提高工作效率，以及 AI 生图进行设计画图等工作。',
+      'about.text': '毕业于迪肯大学体育管理专业，主修市场营销、财务分析、管理经济学及商业分析。具备数据分析能力，能够通过用户行为分析优化活动参与率。英语可作为工作语言，具备国际化沟通及跨文化协作能力。熟练使用 ChatGPT、Gemini 等 AI 工具，并能够使用 Claude Code和Codex 进行代码编写和提高工作效率，以及 AI 生图进行设计画图等工作。',
       'about.eduTitle': '教育背景',
       'about.eduLink': '迪肯大学',
       'about.eduDegree': '— 本科学士 · 体育管理',
@@ -90,6 +90,7 @@
       'contact.heading': '联系我',
       'contact.text': '如果你有合作机会或想了解更多，<br>欢迎随时联系。',
       'contact.location': '深圳 · 南山',
+      'notice.text': '网站内容长期更新~',
 
       'footer.copy': '© 2026 张俊龙',
     },
@@ -113,7 +114,7 @@
 
       'about.heading': 'About Me',
       'about.lead': 'Experienced in overseas event operations and user growth, having participated in the Australian Basketball League and international student sports activities. Proficient in event planning, user operations, on-site execution, and cross-team coordination.',
-      'about.text': 'Graduated from Deakin University with a degree in Sports Management, majoring in Marketing, Financial Analysis, Managerial Economics, and Business Analytics. Possesses data analysis skills to optimize event participation rates through user behavior analysis. English as a working language with international communication and cross-cultural collaboration capabilities. Proficient in using AI tools such as ChatGPT, Gemini, and Copilot, and capable of coding with Claude Code and Codex to improve work efficiency, as well as AI image generation for design and graphics.',
+      'about.text': 'Graduated from Deakin University with a degree in Sports Management, majoring in Marketing, Financial Analysis, Managerial Economics, and Business Analytics. Possesses data analysis skills to optimize event participation rates through user behavior analysis. English as a working language with international communication and cross-cultural collaboration capabilities. Proficient in using AI tools such as ChatGPT and Gemini, and capable of coding with Claude Code and Codex to improve work efficiency, as well as AI image generation for design and graphics.',
       'about.eduTitle': 'Education',
       'about.eduLink': 'Deakin University',
       'about.eduDegree': '— Bachelor\'s Degree · Sports Management',
@@ -177,6 +178,7 @@
       'contact.heading': 'Contact Me',
       'contact.text': 'If you have collaboration opportunities<br>or want to learn more, feel free to reach out.',
       'contact.location': 'Shenzhen · Nanshan',
+      'notice.text': 'The website content is updated on a long-term basis',
 
       'footer.copy': '© 2026 Junlong Zhang',
     },
@@ -219,7 +221,11 @@
   if (langToggle) {
     langToggle.addEventListener('click', () => {
       const next = currentLang === 'zh' ? 'en' : 'zh';
-      applyLang(next);
+      document.body.classList.add('lang-fading');
+      setTimeout(() => {
+        applyLang(next);
+        document.body.classList.remove('lang-fading');
+      }, 350);
     });
   }
 
@@ -489,5 +495,18 @@
   updateProgress();
   updateActiveNav();
   updateCardTilt();
+
+  // ── 浮动通知关闭 ──────────────────────────────────
+  const floatingNotice = document.getElementById('floatingNotice');
+  const noticeClose = document.getElementById('noticeClose');
+  if (floatingNotice && noticeClose) {
+    if (sessionStorage.getItem('noticeClosed')) {
+      floatingNotice.classList.add('floating-notice--hidden');
+    }
+    noticeClose.addEventListener('click', function () {
+      floatingNotice.classList.add('floating-notice--hidden');
+      sessionStorage.setItem('noticeClosed', '1');
+    });
+  }
 
 })();
