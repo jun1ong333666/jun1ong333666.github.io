@@ -1185,7 +1185,7 @@ a.project-card:hover .project-card__company {
   transition: all var(--transition-fast);
 }
 
-.gaming-detail-link {
+.detail-link {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -1197,7 +1197,7 @@ a.project-card:hover .project-card__company {
   transition: gap 0.2s, color 0.2s;
   white-space: nowrap;
 }
-.gaming-detail-link:hover {
+.detail-link:hover {
   gap: 8px;
   color: var(--accent-teal);
 }
