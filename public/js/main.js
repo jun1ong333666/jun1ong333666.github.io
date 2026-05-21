@@ -15,7 +15,7 @@
       'nav.about': '关于',
       'nav.work': '工作经历',
       'nav.projects': '项目经历',
-      'nav.hobbies': '兴趣爱好',
+      'nav.hobbies': '兴趣爱好 / 个人作品',
       'nav.contact': '联系',
 
       'hero.tag': '就业方向：运营，策划，管理等',
@@ -67,7 +67,7 @@
       'projects.card3Tag1': '跨境业务协作',
       'projects.card3Tag2': '报告撰写',
 
-      'hobbies.heading': '兴趣爱好',
+      'hobbies.heading': '兴趣爱好 / 个人作品',
       'hobbies.card1Title': '篮球 / 体育赛事',
       'hobbies.card1Desc': '热爱篮球运动，长期关注 NBA 及国际篮球赛事。关注赛事运营、球员数据与战术分析，将体育管理专业知识与个人兴趣相结合。',
       'hobbies.card1Tag1': '篮球',
@@ -81,6 +81,7 @@
       'hobbies.card2Tag4': '重度FPS玩家',
       'hobbies.card2Tag5': '高分玩家',
       'hobbies.card2Detail': '游戏详情 →',
+      'hobbies.card3Detail': '个人作品 →',
       'hobbies.card3Title': 'AI 工具探索',
       'hobbies.card3Desc': '热衷于探索各类 AI 工具（ChatGPT、Claude、AI 生图等），研究如何将 AI 应用于运营效率提升、内容创作及数据分析等实际工作场景。',
       'hobbies.card3Tag1': 'AI 应用',
@@ -104,7 +105,7 @@
       'nav.about': 'About',
       'nav.work': 'Experience',
       'nav.projects': 'Projects',
-      'nav.hobbies': 'Hobbies',
+      'nav.hobbies': 'Hobbies / Projects',
       'nav.contact': 'Contact',
 
       'hero.tag': 'Career: Operations, Planning, Management, etc.',
@@ -156,7 +157,7 @@
       'projects.card3Tag1': 'Cross-border Collaboration',
       'projects.card3Tag2': 'Report Writing',
 
-      'hobbies.heading': 'Hobbies & Interests',
+      'hobbies.heading': 'Hobbies & Personal Projects',
       'hobbies.card1Title': 'Basketball / Sports Events',
       'hobbies.card1Desc': 'Passionate about basketball, following NBA and international basketball events. Interested in sports event operations, player data and tactical analysis, combining professional sports management knowledge with personal interest.',
       'hobbies.card1Tag1': 'Basketball',
@@ -170,6 +171,7 @@
       'hobbies.card2Tag4': 'Hardcore FPS Player',
       'hobbies.card2Tag5': 'High-Rank Player',
       'hobbies.card2Detail': 'Game Details →',
+      'hobbies.card3Detail': 'Personal Project →',
       'hobbies.card3Title': 'AI Tool Exploration',
       'hobbies.card3Desc': 'Keen on exploring various AI tools (ChatGPT, Claude, AI image generation, etc.), researching how to apply AI to operational efficiency improvement, content creation and data analysis in practical work scenarios.',
       'hobbies.card3Tag1': 'AI Application',
