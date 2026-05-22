@@ -1076,7 +1076,7 @@ button {
 
 .project-card {
   display: grid;
-  grid-template-columns: 40px 1fr 1fr;
+  grid-template-columns: 40px 1fr 0.5fr;
   gap: 48px;
   padding: 44px 0;
   border-top: 1px solid var(--border);
@@ -1494,6 +1494,7 @@ a.project-card:hover .project-card__company {
   .project-card__image {
     grid-column: 1 / -1;
     margin-top: 12px;
+    max-width: 50%;
   }
 
   .project-card:hover {
