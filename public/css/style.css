@@ -54,7 +54,7 @@ body {
   font-family: var(--font-sans);
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  background-image: url('../images/bg-dark.png');
+  background-image: url('../images/bg-dark.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -70,7 +70,7 @@ body.lang-fading {
 }
 
 [data-theme="light"] body {
-  background-image: url('../images/bg-light.png');
+  background-image: url('../images/bg-light.jpg');
 }
 
 /* 背景：网格 + 径向渐变叠加 */
