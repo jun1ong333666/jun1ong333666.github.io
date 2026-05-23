@@ -33,18 +33,16 @@
       color: var(--text-primary);
     }
     .detail-page h2 {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
+      margin: 0;
     }
     .detail-page h3 {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--accent-teal);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .detail-page .subtitle {
       color: var(--accent-teal);
@@ -90,11 +88,6 @@
       max-width: 680px;
     }
 
-    .detail-github-link:hover {
-      gap: 10px;
-      color: var(--accent-teal);
-    }
-
     .detail-intro {
       max-width: 100%;
       border-radius: 12px;
@@ -128,37 +121,123 @@
       font-size: 24px;
     }
 
-    .step-list {
-      list-style: none;
+    /* Section header */
+    .section-header {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      counter-reset: step;
-      margin-bottom: 0;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
     }
-    .step-list li {
-      color: var(--text-secondary);
-      font-size: 14px;
-      line-height: 1.7;
-      padding-left: 28px;
-      position: relative;
-      counter-increment: step;
+    .section-icon {
+      font-size: 22px;
+      line-height: 1;
     }
-    .step-list li::before {
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 2px;
-      width: 20px;
-      height: 20px;
+
+    /* Step cards */
+    .step-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .step-card {
+      display: flex;
+      gap: 18px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .step-card:hover {
+      border-color: rgba(94, 106, 210, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+    .step-card__number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--accent-teal);
       color: #fff;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .step-card__body {
+      flex: 1;
+      min-width: 0;
+    }
+    .step-card__body h3 {
+      margin-top: 0;
+    }
+    .step-card__body p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 8px;
+    }
+    .step-card__note {
+      color: var(--text-tertiary, rgba(255,255,255,0.4));
+      font-size: 13px;
+      margin-top: 10px;
+    }
+    .step-card__body .code-block {
+      margin: 8px 0;
+    }
+
+    /* Feature grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .feature-card {
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(94, 106, 210, 0.3);
+      transform: translateY(-2px);
+    }
+    .feature-card__icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .feature-card h3 {
+      margin-top: 0;
+    }
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 6px;
+    }
+
+    /* Compat badges */
+    .compat-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .compat-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(94, 106, 210, 0.15);
+      border: 1px solid rgba(94, 106, 210, 0.2);
+      color: var(--accent-teal);
+      font-size: 12px;
+      font-weight: 500;
     }
 
     .detail-section {
@@ -172,7 +251,8 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 8px;
+      margin: 0 0 4px;
     }
     .feature-list li {
       color: var(--text-secondary);
@@ -196,52 +276,101 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 16px 20px;
-      margin: 12px 0;
+      padding: 14px 18px;
+      margin: 8px 0;
       overflow-x: auto;
     }
     .code-block code {
       font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
       font-size: 13px;
       color: var(--text-secondary);
-      line-height: 1.7;
+      line-height: 1.6;
       white-space: pre;
     }
 
-    .inline-code {
-      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-      font-size: 13px;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: var(--accent-teal);
+    /* Tips card */
+    .tips-card {
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
     }
-
-    .faq-list {
+    .tips-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 14px;
+      margin: 0;
     }
-    .faq-list li {
+    .tips-list li {
       color: var(--text-secondary);
       font-size: 14px;
       line-height: 1.7;
+      padding-left: 20px;
+      position: relative;
     }
-    .faq-list li strong {
-      color: var(--text-primary);
-      display: block;
+    .tips-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+    }
+    .tips-card__footer {
+      color: var(--text-tertiary, rgba(255,255,255,0.4));
+      font-size: 13px;
+      margin: 14px 0 0;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
     }
 
-    .section-note {
-      margin-top: 48px;
-      padding: 16px 20px;
-      background: var(--accent-teal-dim);
+    /* Summary card */
+    .summary-card {
+      padding: 28px 32px;
+      background: linear-gradient(135deg, rgba(94, 106, 210, 0.08), rgba(220, 38, 38, 0.06));
       border: 1px solid rgba(94, 106, 210, 0.15);
-      border-radius: 8px;
+      border-radius: 12px;
+    }
+    .summary-card p {
       color: var(--text-secondary);
-      font-size: 13px;
-      line-height: 1.7;
+      font-size: 15px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .step-grid {
+        grid-template-columns: 1fr;
+      }
+      .step-card {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .step-card__number {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .detail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .detail-intro {
+        max-width: 100%;
+      }
+      .summary-card {
+        padding: 20px;
+      }
     }
 
     .lightbox {
@@ -326,73 +455,114 @@
 
     <!-- 快速上手 -->
     <div class="detail-section">
-      <h2>快速上手</h2>
-
-      <h3>系统要求</h3>
-      <ul class="feature-list" style="margin-bottom: 24px;">
-        <li>Windows / macOS / Linux</li>
-        <li>Node.js ≥ 18</li>
-        <li>Python ≥ 3.8（需要 flask 和 flask-cors）</li>
-      </ul>
-
-      <h3>安装步骤</h3>
-      <ol class="step-list">
-        <li>下载并解压软件</li>
-        <li>安装依赖（Node + Python）</li>
-        <li>配置 API Key（DeepSeek / OpenAI / Anthropic）</li>
-        <li>启动软件即可开始监控</li>
-      </ol>
-
-      <div class="section-note" style="margin-top: 24px;">
-        <strong>Tip:</strong> 软件会自动记录所有通过本地代理的 API 请求，生成详细消费报表。
+      <div class="section-header">
+        <span class="section-icon">🚀</span>
+        <h2>快速上手</h2>
       </div>
-    </div>
+
+      <div class="step-grid">
+        <div class="step-card">
+          <div class="step-card__number">1</div>
+          <div class="step-card__body">
+            <h3>下载运行</h3>
+            <p>下载并解压后，直接启动：</p>
+            <div class="code-block"><code>token-monitor.exe</code></div>
+            <p class="step-card__note">程序会自动启动本地代理服务。</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-card__number">2</div>
+          <div class="step-card__body">
+            <h3>配置 API</h3>
+            <p>点击右上角 ⚙️ 设置按钮，填写：</p>
+            <ul class="feature-list">
+              <li>API Key</li>
+              <li>API Base URL</li>
+              <li>余额预警</li>
+              <li>月度预算</li>
+            </ul>
+            <p class="step-card__note">支持最多 3 组 API 配置。</p>
+          </div>
+        </div>
+      </div>
 
     <!-- 功能亮点 -->
     <div class="detail-section">
-      <h2>功能亮点</h2>
+      <div class="section-header">
+        <span class="section-icon">✨</span>
+        <h2>功能亮点</h2>
+      </div>
 
-      <h3>1. 实时余额与费用监控</h3>
-      <ul class="feature-list">
-        <li>查看账户余额</li>
-        <li>今日 / 本周 / 本月消费金额</li>
-        <li>支持多模型独立余额预警</li>
-      </ul>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon">📊</div>
+          <h3>实时消费统计</h3>
+          <p>自动统计：</p>
+          <ul class="feature-list">
+            <li>Token 用量</li>
+            <li>请求次数</li>
+            <li>今日 / 本周 / 本月消费</li>
+            <li>模型费用占比</li>
+          </ul>
+        </div>
 
-      <h3>2. 自动记录 API 消耗</h3>
-      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 8px;">将你的 LLM 客户端（如 Cursor、Claude Code）API Base 设置为本地代理：</p>
-      <div class="code-block"><code>http://127.0.0.1:5099/v1</code></div>
-      <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">所有请求自动统计 Token 使用和费用</p>
+        <div class="feature-card">
+          <div class="feature-card__icon">🔔</div>
+          <h3>余额与预算预警</h3>
+          <p>支持：</p>
+          <ul class="feature-list">
+            <li>DeepSeek 余额查询</li>
+            <li>低余额提醒</li>
+            <li>月度预算监控</li>
+          </ul>
+          <p class="step-card__note">帮助控制 API 成本。</p>
+        </div>
 
-      <h3>3. 桌面窗口功能</h3>
-      <ul class="feature-list">
-        <li><strong style="color: var(--text-primary);">固定窗口：</strong>点击图钉按钮，窗口保持在桌面上，方便随时查看</li>
-        <li><strong style="color: var(--text-primary);">开机自启：</strong>在设置面板一键开启</li>
-      </ul>
-
-      <h3>4. 多账户管理</h3>
-      <ul class="feature-list">
-        <li>支持最多 3 组 API Key</li>
-        <li>每组 Key 可单独设置余额预警</li>
-      </ul>
+        <div class="feature-card">
+          <div class="feature-card__icon">📈</div>
+          <h3>可视化数据分析</h3>
+          <p>内置趋势图与模型统计：</p>
+          <ul class="feature-list">
+            <li>Token 趋势图</li>
+            <li>模型占比图</li>
+            <li>多时间维度查看</li>
+          </ul>
+          <p class="step-card__note">所有数据实时更新。</p>
+        </div>
+      </div>
     </div>
 
     <!-- 使用提示 -->
     <div class="detail-section">
-      <h2>使用提示</h2>
-      <ul class="faq-list">
-        <li><strong>余额显示 "--"？</strong>检查 API Key 是否正确，网络是否能访问 API</li>
-        <li><strong>代理不工作？</strong>确认软件启动成功，并将客户端 API Base 设置为本地地址</li>
-        <li><strong>取消开机自启：</strong>在设置面板关闭，或删除启动项快捷方式</li>
-      </ul>
+      <div class="section-header">
+        <span class="section-icon">📌</span>
+        <h2>使用提示</h2>
+      </div>
+      <div class="tips-card">
+        <ul class="tips-list">
+          <li>建议长期后台运行，方便持续统计数据</li>
+          <li>余额自动查询目前仅支持 DeepSeek</li>
+          <li>配置与历史数据保存在：
+            <div class="code-block" style="margin: 8px 0 0;"><code>config.json<br>data/usage.db</code></div>
+          </li>
+        </ul>
+        <p class="tips-card__footer">备份即可迁移全部数据。</p>
+      </div>
     </div>
 
     <!-- 总结 -->
     <div class="detail-section">
-      <h2>总结</h2>
-      <p style="color: var(--text-secondary); font-size: 15px; line-height: 1.9;">
-        TokenCost Monitor 让 AI 开发者和使用者轻松掌握 API 消费情况，不再担心超支或浪费，每次调用都清清楚楚。
-      </p>
+      <div class="section-header">
+        <span class="section-icon">✅</span>
+        <h2>总结</h2>
+      </div>
+      <div class="summary-card">
+        <p>
+          Token Monitor 是一款轻量、开源的 AI API 用量监控工具。
+          无需修改业务代码，即可实时追踪 Token 消耗与 API 费用，帮助你更直观地管理 AI 成本。
+        </p>
+      </div>
     </div>
   </main>
 
